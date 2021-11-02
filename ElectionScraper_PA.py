@@ -8,6 +8,7 @@ import json
 from bs4 import BeautifulSoup
 
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 import time
 import os
@@ -24,6 +25,8 @@ pages = {
     'superior':superior,
     'comm':comm
 }
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 browser = webdriver.Chrome()
 
