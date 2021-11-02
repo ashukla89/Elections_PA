@@ -1,0 +1,3024 @@
+<html class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths ng-scope" lang="en" ng-app="appModule">
+ <head>
+  <style type="text/css">
+   @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+  </style>
+  <title>
+   Pennsylvania Elections - County Results
+  </title>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <link href="/Content/bootstrap.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <link href="/Content/bootstrap-glyphicons.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <link href="/Content/core.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <link href="/Content/font-awesome.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <link href="/Content/angular-busy.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <link href="/Content/animate.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <link href="/Content/custom.css?v=1.2" rel="stylesheet" type="text/css"/>
+  <script async="" src="https://www.google.com/recaptcha/api.js" type="text/javascript">
+  </script>
+  <script async="" src="https://ssl.google-analytics.com/ga.js" type="text/javascript">
+  </script>
+  <script src="/Scripts/jquery-1.12.0.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/bootstrap.min.js?v=1.2" type="text/javascript">
+  </script>
+  <style>
+   [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+  </style>
+  <script type="text/javascript">
+   var GACode = 'UA-56757930-1';
+  </script>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', GACode]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+ </head>
+ <body>
+  <div class="container ng-scope" ng-controller="LayoutController">
+   <input type="hidden" value=""/>
+   <div class="row">
+    <div class="col-md-12">
+     <img alt="PABanner" src="/Images/banner-agency2.png" style="width:100%;vertical-align:top;"/>
+    </div>
+   </div>
+   <style type="text/css">
+    .contrast {
+        background-color: #07519C;
+    }
+   </style>
+   <div class="ng-scope" ng-controller="HeaderController">
+    <div class="navbar navbar-default contrast" role="navigation">
+     <div class="container-fluid">
+      <div class="navbar-header">
+       <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+        <span class="sr-only">
+         Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+       </button>
+       <a class="navbar-brand nav-title" href="http://www.dos.state.pa.us/" id="page_title" target="_blank">
+        Department of State
+       </a>
+      </div>
+      <div class="navbar-collapse collapse">
+       <ul class="nav navbar-nav">
+       </ul>
+       <ul class="nav navbar-nav navbar-right">
+        <li>
+         <a href="#" ng-click="HomeClick()">
+          <span class="glyphicon glyphicon-home">
+          </span>
+          Home
+         </a>
+        </li>
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Reports
+          <b class="caret">
+          </b>
+         </a>
+         <ul class="dropdown-menu" style="right: 0; left: auto;">
+          <li>
+           <a href="#" ng-click="LoadReportCenter()">
+            Reporting Center
+           </a>
+          </li>
+          <li>
+           <a href="#" ng-click="LoadElectionFeed()">
+            Election Feed
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Elections
+          <b class="caret">
+          </b>
+         </a>
+         <ul class="dropdown-menu multi-level" style="right: 0; left: auto;">
+          <!-- ngRepeat: yearset in electionJson track by $index -->
+          <li class="dropdown-submenu ng-scope" ng-repeat="yearset in electionJson track by $index">
+           <a alt="yearset.year" class="toggleStop ng-binding" href="#" tabindex="-1">
+            2020 - 2024
+           </a>
+           <ul class="dropdown-menu multi-level">
+            <!-- ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Election
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Presidential Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Primary
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Presidential Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Special
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Special Election 164th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Special Election 113th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Special Election 60th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Special Election 22nd Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Special Election 48th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2021 Special Election 59th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Special Election 58th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Special Election 18th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Special Election 8th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Special Election 190th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2020 Special Election 48th Senatorial Distirct
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+           </ul>
+          </li>
+          <!-- end ngRepeat: yearset in electionJson track by $index -->
+          <li class="dropdown-submenu ng-scope" ng-repeat="yearset in electionJson track by $index">
+           <a alt="yearset.year" class="toggleStop ng-binding" href="#" tabindex="-1">
+            2015 - 2019
+           </a>
+           <ul class="dropdown-menu multi-level">
+            <!-- ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Election
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2017 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Presidential Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Primary
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2017 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Presidential Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Special
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 85th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 11th Legislative
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 12th Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 41st Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 33rd Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 37th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 114th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2019 Special Election 190th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 15th Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 7th Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 68th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 178th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 48th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 18th Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2018 Special Election 35th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2017 Special Election 133rd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2017 Special Election 197th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Special Election 2nd Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Special Election 168th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Special Election 9th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Special Election 57th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Special Election 200th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2016 Special Election 192nd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 37th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 195th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 191st Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 174th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 161st Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 87th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 5th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2015 Special Election 170th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+           </ul>
+          </li>
+          <!-- end ngRepeat: yearset in electionJson track by $index -->
+          <li class="dropdown-submenu ng-scope" ng-repeat="yearset in electionJson track by $index">
+           <a alt="yearset.year" class="toggleStop ng-binding" href="#" tabindex="-1">
+            2010 - 2014
+           </a>
+           <ul class="dropdown-menu multi-level">
+            <!-- ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Election
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2014 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2013 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2011 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Primary
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2014 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2013 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2011 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Special
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2014 Special Election 28th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2014 Special Election 78th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2013 Special Election 42nd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2013 Special Election 95th Legislative Distrct
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 40th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 197th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 186th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 169th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 153rd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 134th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2012 Special Election 22nd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2011 Special Election 11th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2011 Special Election 185th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 Special Election 45th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 Special Election 147th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 Special Election 138th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 Special Election 20th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2010 Special Election 12th Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+           </ul>
+          </li>
+          <!-- end ngRepeat: yearset in electionJson track by $index -->
+          <li class="dropdown-submenu ng-scope" ng-repeat="yearset in electionJson track by $index">
+           <a alt="yearset.year" class="toggleStop ng-binding" href="#" tabindex="-1">
+            2005 - 2009
+           </a>
+           <ul class="dropdown-menu multi-level">
+            <!-- ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Election
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2009 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2008 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2007 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2006 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Primary
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2009 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2008 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2007 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2006 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Special
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2009 Special Election 24th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2009 Special Election 124th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2009 Special Election 29th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2006 Special Election 19th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2006 Special Election 30th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2006 Special Election 174th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Special Election 200th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Special Election 131st Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Special Election 42nd Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Special Election 4th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Special Election 16th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2005 Special Election 189th State House District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+           </ul>
+          </li>
+          <!-- end ngRepeat: yearset in electionJson track by $index -->
+          <li class="dropdown-submenu ng-scope" ng-repeat="yearset in electionJson track by $index">
+           <a alt="yearset.year" class="toggleStop ng-binding" href="#" tabindex="-1">
+            2000 - 2004
+           </a>
+           <ul class="dropdown-menu multi-level">
+            <!-- ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Election
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2004 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2002 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Municipal Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2000 General Election
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Primary
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2004 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2002 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Municipal Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2000 General Primary
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+            <li class="dropdown-submenu ng-scope" ng-repeat="electionTypes in yearset.electiontype">
+             <a alt="electionTypes.type" class="toggleStop ng-binding" href="#" tabindex="-1">
+              Special
+             </a>
+             <ul class="dropdown-menu" style="right: auto;">
+              <!-- ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2004 Special Election 152nd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2004 Special Election 109th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Special Election 27th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Special Election 3rd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Special Election 168th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Special Election 44th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Special Election 99th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2003 Special Election 37th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2002 Special Election 9th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2002 Special Election 100th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2002 Special Election 176th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2002 Special Election 149th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Special Election 17th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Special Election 9th Congressional District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Special Election 2nd Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Special Election 28th Legislative District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Special Election 26th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+              <li class="ng-scope" ng-repeat="election in electionTypes.Elections">
+               <a class="ng-binding" href="#" ng-click="ElectionMenuClick(election.Electionid,election.ElectionType,election.ISActive)">
+                2001 Special Election 40th Senatorial District
+               </a>
+              </li>
+              <!-- end ngRepeat: election in electionTypes.Elections -->
+             </ul>
+            </li>
+            <!-- end ngRepeat: electionTypes in yearset.electiontype -->
+           </ul>
+          </li>
+          <!-- end ngRepeat: yearset in electionJson track by $index -->
+         </ul>
+        </li>
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Counties
+          <b class="caret">
+          </b>
+         </a>
+         <ul class="dropdown-menu multi-level" style="right: 0; left: auto;">
+          <li class="dropdown-submenu">
+           <a alt="A-B" class="toggleStop" href="#" tabindex="-1">
+            A-B
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="ADAMS" class="countydata" href="#">
+              ADAMS
+             </a>
+            </li>
+            <li>
+             <a alt="ALLEGHENY" class="countydata" href="#">
+              ALLEGHENY
+             </a>
+            </li>
+            <li>
+             <a alt="ARMSTRONG" class="countydata" href="#">
+              ARMSTRONG
+             </a>
+            </li>
+            <li>
+             <a alt="BEAVER" class="countydata" href="#">
+              BEAVER
+             </a>
+            </li>
+            <li>
+             <a alt="BEDFORD" class="countydata" href="#">
+              BEDFORD
+             </a>
+            </li>
+            <li>
+             <a alt="BERKS" class="countydata" href="#">
+              BERKS
+             </a>
+            </li>
+            <li>
+             <a alt="BLAIR" class="countydata" href="#">
+              BLAIR
+             </a>
+            </li>
+            <li>
+             <a alt="BRADFORD" class="countydata" href="#">
+              BRADFORD
+             </a>
+            </li>
+            <li>
+             <a alt="BUCKS" class="countydata" href="#">
+              BUCKS
+             </a>
+            </li>
+            <li>
+             <a alt="BUTLER" class="countydata" href="#">
+              BUTLER
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a alt="C" class="toggleStop" href="#" tabindex="-1">
+            C
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="CAMBRIA" class="countydata" href="#">
+              CAMBRIA
+             </a>
+            </li>
+            <li>
+             <a alt="CAMERON" class="countydata" href="#">
+              CAMERON
+             </a>
+            </li>
+            <li>
+             <a alt="CARBON" class="countydata" href="#">
+              CARBON
+             </a>
+            </li>
+            <li>
+             <a alt="CENTRE" class="countydata" href="#">
+              CENTRE
+             </a>
+            </li>
+            <li>
+             <a alt="CHESTER" class="countydata" href="#">
+              CHESTER
+             </a>
+            </li>
+            <li>
+             <a alt="CLARION" class="countydata" href="#">
+              CLARION
+             </a>
+            </li>
+            <li>
+             <a alt="CLEARFIELD" class="countydata" href="#">
+              CLEARFIELD
+             </a>
+            </li>
+            <li>
+             <a alt="CLINTON" class="countydata" href="#">
+              CLINTON
+             </a>
+            </li>
+            <li>
+             <a alt="COLUMBIA" class="countydata" href="#">
+              COLUMBIA
+             </a>
+            </li>
+            <li>
+             <a alt="CRAWFORD" class="countydata" href="#">
+              CRAWFORD
+             </a>
+            </li>
+            <li>
+             <a alt="CUMBERLAND" class="countydata" href="#">
+              CUMBERLAND
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a alt="D-I" class="toggleStop" href="#" tabindex="-1">
+            D-I
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="DAUPHIN" class="countydata" href="#">
+              DAUPHIN
+             </a>
+            </li>
+            <li>
+             <a alt="DELAWARE" class="countydata" href="#">
+              DELAWARE
+             </a>
+            </li>
+            <li>
+             <a alt="ELK" class="countydata" href="#">
+              ELK
+             </a>
+            </li>
+            <li>
+             <a alt="ERIE" class="countydata" href="#">
+              ERIE
+             </a>
+            </li>
+            <li>
+             <a alt="FAYETTE" class="countydata" href="#">
+              FAYETTE
+             </a>
+            </li>
+            <li>
+             <a alt="FOREST" class="countydata" href="#">
+              FOREST
+             </a>
+            </li>
+            <li>
+             <a alt="FRANKLIN" class="countydata" href="#">
+              FRANKLIN
+             </a>
+            </li>
+            <li>
+             <a alt="FULTON" class="countydata" href="#">
+              FULTON
+             </a>
+            </li>
+            <li>
+             <a alt="GREENE" class="countydata" href="#">
+              GREENE
+             </a>
+            </li>
+            <li>
+             <a alt="HUNTINGDON" class="countydata" href="#">
+              HUNTINGDON
+             </a>
+            </li>
+            <li>
+             <a alt="INDIANA" class="countydata" href="#">
+              INDIANA
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a alt="ADAMS" class="toggleStop" href="#" tabindex="-1">
+            J-L
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="JEFFERSON" class="countydata" href="#">
+              JEFFERSON
+             </a>
+            </li>
+            <li>
+             <a alt="JUNIATA" class="countydata" href="#">
+              JUNIATA
+             </a>
+            </li>
+            <li>
+             <a alt="LACKAWANNA" class="countydata" href="#">
+              LACKAWANNA
+             </a>
+            </li>
+            <li>
+             <a alt="LANCASTER" class="countydata" href="#">
+              LANCASTER
+             </a>
+            </li>
+            <li>
+             <a alt="LAWRENCE" class="countydata" href="#">
+              LAWRENCE
+             </a>
+            </li>
+            <li>
+             <a alt="LEBANON" class="countydata" href="#">
+              LEBANON
+             </a>
+            </li>
+            <li>
+             <a alt="LEHIGH" class="countydata" href="#">
+              LEHIGH
+             </a>
+            </li>
+            <li>
+             <a alt="LUZERNE" class="countydata" href="#">
+              LUZERNE
+             </a>
+            </li>
+            <li>
+             <a alt="LYCOMING" class="countydata" href="#">
+              LYCOMING
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a alt="ADAMS" class="toggleStop" href="#" tabindex="-1">
+            M-N
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="McKEAN" class="countydata" href="#">
+              McKEAN
+             </a>
+            </li>
+            <li>
+             <a alt="MERCER" class="countydata" href="#">
+              MERCER
+             </a>
+            </li>
+            <li>
+             <a alt="MIFFLIN" class="countydata" href="#">
+              MIFFLIN
+             </a>
+            </li>
+            <li>
+             <a alt="MONROE" class="countydata" href="#">
+              MONROE
+             </a>
+            </li>
+            <li>
+             <a alt="MONTGOMERY" class="countydata" href="#">
+              MONTGOMERY
+             </a>
+            </li>
+            <li>
+             <a alt="MONTOUR" class="countydata" href="#">
+              MONTOUR
+             </a>
+            </li>
+            <li>
+             <a alt="NORTHAMPTON" class="countydata" href="#">
+              NORTHAMPTON
+             </a>
+            </li>
+            <li>
+             <a alt="NORTHUMBERLAND" class="countydata" href="#">
+              NORTHUMBERLAND
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a alt="ADAMS" class="toggleStop" href="#" tabindex="-1">
+            P-S
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="PERRY" class="countydata" href="#">
+              PERRY
+             </a>
+            </li>
+            <li>
+             <a alt="PHILADELPHIA" class="countydata" href="#">
+              PHILADELPHIA
+             </a>
+            </li>
+            <li>
+             <a alt="PIKE" class="countydata" href="#">
+              PIKE
+             </a>
+            </li>
+            <li>
+             <a alt="POTTER" class="countydata" href="#">
+              POTTER
+             </a>
+            </li>
+            <li>
+             <a alt="SCHUYLKILL" class="countydata" href="#">
+              SCHUYLKILL
+             </a>
+            </li>
+            <li>
+             <a alt="SNYDER" class="countydata" href="#">
+              SNYDER
+             </a>
+            </li>
+            <li>
+             <a alt="SOMERSET" class="countydata" href="#">
+              SOMERSET
+             </a>
+            </li>
+            <li>
+             <a alt="SULLIVAN" class="countydata" href="#">
+              SULLIVAN
+             </a>
+            </li>
+            <li>
+             <a alt="SUSQUEHANNA" class="countydata" href="#">
+              SUSQUEHANNA
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a alt="ADAMS" class="toggleStop" href="#" tabindex="-1">
+            T-Z
+           </a>
+           <ul class="dropdown-menu">
+            <li>
+             <a alt="TIOGA" class="countydata" href="#">
+              TIOGA
+             </a>
+            </li>
+            <li>
+             <a alt="UNION" class="countydata" href="#">
+              UNION
+             </a>
+            </li>
+            <li>
+             <a alt="VENANGO" class="countydata" href="#">
+              VENANGO
+             </a>
+            </li>
+            <li>
+             <a alt="WARREN" class="countydata" href="#">
+              WARREN
+             </a>
+            </li>
+            <li>
+             <a alt="WASHINGTON" class="countydata" href="#">
+              WASHINGTON
+             </a>
+            </li>
+            <li>
+             <a alt="WAYNE" class="countydata" href="#">
+              WAYNE
+             </a>
+            </li>
+            <li>
+             <a alt="WESTMORELAND" class="countydata" href="#">
+              WESTMORELAND
+             </a>
+            </li>
+            <li>
+             <a alt="WYOMING" class="countydata" href="#">
+              WYOMING
+             </a>
+            </li>
+            <li>
+             <a alt="YORK" class="countydata" href="#">
+              YORK
+             </a>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </li>
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Offices
+          <b class="caret">
+          </b>
+         </a>
+         <ul class="dropdown-menu" style="right: 0; left: auto;">
+          <!-- ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Justice of the Supreme Court
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Judge of the Superior Court
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Judge of the Commonwealth Court
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Judge of the Court of Common Pleas - Philadelphia
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Judge of the Court of Common Pleas - Allegheny
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Judge of the Court of Common Pleas
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+          <li class="ng-scope" ng-repeat="offices in officeNames.Table">
+           <a class="ng-binding" href="#" ng-click="MenuClick(offices.OfficeID)">
+            Judge of the Municipal Court
+           </a>
+          </li>
+          <!-- end ngRepeat: offices in officeNames.Table -->
+         </ul>
+        </li>
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Other Links
+          <b class="caret">
+          </b>
+         </a>
+         <ul class="dropdown-menu" style="right: 0; left: auto;">
+          <li>
+           <a href="http://www.dos.state.pa.us/" target="_blank">
+            Department of State
+           </a>
+          </li>
+          <li>
+           <a href="http://www.dos.pa.gov/VotingElections" target="_blank">
+            BCEL Home Page
+           </a>
+          </li>
+          <li>
+           <a href="https://www.campaignfinanceonline.state.pa.us/" target="_blank">
+            Campaign Finance Reporting
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div style="margin-top:1px;">
+     <div class="panel-heading-level1">
+      <div class="panel-title" style="font-size:14px;">
+       <div class="row" ng-show="(isReportCenter!=1  &amp;&amp; isElectionFeed!=1)">
+        <div class="col-sm-4">
+         <div class="row" style="margin-left:1px; width:400px;">
+          <span class="ng-binding" style="font-weight:bold;">
+           2021 Municipal Election
+          </span>
+         </div>
+        </div>
+        <div class="col-sm-4">
+         <div class="row ng-binding" style="text-align:center;">
+          Tuesday, November 2, 2021
+         </div>
+         <div class="row" style="text-align:center;">
+          <span class="ng-binding">
+           Unofficial Returns
+          </span>
+         </div>
+         <div class="row" style="text-align:center; margin-top:5px;">
+          <h4>
+           <span bind-unsafe-html="displayName">
+            <a alt="http://www.votewarren.org" class="ng-scope" href="http://www.votewarren.org" style="color:#fff" target="_blank" title="http://www.votewarren.org">
+             WARREN
+            </a>
+           </span>
+          </h4>
+         </div>
+        </div>
+        <div class="col-sm-4">
+         <div class="row ng-hide" ng-show="preincts.ShowVotesVRBreakdown == '1'">
+          <span class="ng-binding" style="color:#fff">
+          </span>
+         </div>
+         <div class="row ng-hide" ng-show="preincts.ShowVotesVRBreakdown == '1'" style="margin-top: 10px; margin-right: 10px;">
+          <div ng-class="{'col-sm-12':showChart==true, 'col-sm-8':showChart==true}">
+           <div class="progress">
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar progress-bar-warning" ng-attr-style="width: {{preincts.BallotPercentage}}%" role="progressbar" style="width: 0%">
+             <small>
+              <span class="spantext ng-binding">
+               0%
+              </span>
+             </small>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="row ng-hide" ng-show="false">
+          <span class="ng-binding" style="color:#87A1C4">
+           0 Out of 33 Districts (0.00%)  - IN PERSON BALLOT REPORTING ONLY
+          </span>
+         </div>
+         <div class="row ng-hide" ng-show="false" style="margin-top: 10px; margin-right: 10px;">
+          <div ng-class="{'col-sm-12':showChart==true, 'col-sm-8':showChart==true}">
+           <div class="progress">
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-warning" ng-attr-style="width: {{preincts.Percentage}}%;background-color: #9DA0A0;" role="progressbar" style="width: 0.00%;background-color: #9DA0A0;">
+             <small>
+              <span class="spantext ng-binding" style="color:#6F7171">
+               0.00%
+              </span>
+             </small>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="row ng-hide" ng-show="preincts.ShowVotesPBBreakdown == '1'">
+          <span class="ng-binding" style="color:#fff">
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="row ng-hide" ng-show="isReportCenter==1 || isElectionFeed==1">
+        <div style="text-align:center; margin-top:15px;">
+         <h4>
+          <span bind-unsafe-html="displayName">
+           <a alt="http://www.votewarren.org" class="ng-scope" href="http://www.votewarren.org" style="color:#fff" target="_blank" title="http://www.votewarren.org">
+            WARREN
+           </a>
+          </span>
+         </h4>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script type="text/javascript">
+    $(function () {
+        $(".countydata").click(function () {
+            var electionType = window.localStorage['Electiondetails'];
+            var electionID = $('[ng-controller="HeaderController"]').scope().electionID;
+            var isActive = $('[ng-controller="HeaderController"]').scope().isActive;
+            if (electionType == 'P') {
+                window.location.href = applicationPath + "Home/CountyResults?countyName=" + this.text + '&ElectionID=' + electionID + '&ElectionType=' + electionType + '&IsActive=' + isActive;
+            } else if (electionType == 'G') {
+                window.location.href = applicationPath + "General/CountyResults?countyName=" + this.text + '&ElectionID=' + electionID + '&ElectionType=' + electionType + '&IsActive=' + isActive;
+            }
+            else if (electionType == 'S') {
+                window.location.href = applicationPath + "Special/CountyResults?countyName=" + this.text + '&ElectionID=' + electionID + '&ElectionType=' + electionType + '&IsActive=' + isActive;
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('.dropdown a.toggleStop').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+   </script>
+   <div class="ng-scope" ng-controller="CountyElectionGeneralController">
+    <div cg-busy="promiseGet" style="position: relative;">
+     <div class="panel panel-default">
+      <div class="panel-body">
+       <div class="col-xs-3" id="secondary">
+        <div class="panel-group-ba" id="filters">
+         <div class="panel panel-default" style="background-color:#D1E7FE;">
+          <div class="panel-heading-level1">
+           <h6>
+            Filter Options
+           </h6>
+          </div>
+          <div class="panel-body">
+           <!-- ngRepeat: eachRow in facetFilter -->
+           <div class="ng-scope" ng-repeat="eachRow in facetFilter">
+            <div class="checkbox">
+             <label>
+              <input class="ajax ng-pristine ng-untouched ng-valid ng-empty" ng-click="applyFilter()" ng-model="eachRow.checked" type="checkbox" value="eachRow.name"/>
+              <span class="ng-binding" ng-bind="eachRow.name">
+               Justice of the Supreme Court
+              </span>
+             </label>
+            </div>
+           </div>
+           <!-- end ngRepeat: eachRow in facetFilter -->
+           <div class="ng-scope" ng-repeat="eachRow in facetFilter">
+            <div class="checkbox">
+             <label>
+              <input class="ajax ng-pristine ng-untouched ng-valid ng-empty" ng-click="applyFilter()" ng-model="eachRow.checked" type="checkbox" value="eachRow.name"/>
+              <span class="ng-binding" ng-bind="eachRow.name">
+               Judge of the Superior Court
+              </span>
+             </label>
+            </div>
+           </div>
+           <!-- end ngRepeat: eachRow in facetFilter -->
+           <div class="ng-scope" ng-repeat="eachRow in facetFilter">
+            <div class="checkbox">
+             <label>
+              <input class="ajax ng-pristine ng-untouched ng-valid ng-empty" ng-click="applyFilter()" ng-model="eachRow.checked" type="checkbox" value="eachRow.name"/>
+              <span class="ng-binding" ng-bind="eachRow.name">
+               Judge of the Superior Court (Retention)
+              </span>
+             </label>
+            </div>
+           </div>
+           <!-- end ngRepeat: eachRow in facetFilter -->
+           <div class="ng-scope" ng-repeat="eachRow in facetFilter">
+            <div class="checkbox">
+             <label>
+              <input class="ajax ng-pristine ng-untouched ng-valid ng-empty" ng-click="applyFilter()" ng-model="eachRow.checked" type="checkbox" value="eachRow.name"/>
+              <span class="ng-binding" ng-bind="eachRow.name">
+               Judge of the Commonwealth Court
+              </span>
+             </label>
+            </div>
+           </div>
+           <!-- end ngRepeat: eachRow in facetFilter -->
+           <div class="ng-scope" ng-repeat="eachRow in facetFilter">
+            <div class="checkbox">
+             <label>
+              <input class="ajax ng-pristine ng-untouched ng-valid ng-empty" ng-click="applyFilter()" ng-model="eachRow.checked" type="checkbox" value="eachRow.name"/>
+              <span class="ng-binding" ng-bind="eachRow.name">
+               Judge of the Commonwealth Court (Retention)
+              </span>
+             </label>
+            </div>
+           </div>
+           <!-- end ngRepeat: eachRow in facetFilter -->
+          </div>
+         </div>
+         <div class="panel panel-default" style="background-color:#D1E7FE; display:none;">
+          <div class="panel-heading-level1">
+           <h6>
+            Sort
+           </h6>
+          </div>
+          <div class="panel-body">
+           <label for="sortOrder" style="display:none;">
+            sort Order
+           </label>
+           <select class="form-control ajax ng-pristine ng-untouched ng-valid ng-not-empty" id="sortOrder" name="sort" ng-model="selectedSortOrder">
+            <option selected="" value="0">
+             Please select
+            </option>
+            <option value="asc">
+             Ascending
+            </option>
+            <option value="desc">
+             Descending
+            </option>
+           </select>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="col-xs-9" id="primary">
+        <div class="row" id="items">
+         <!-- ngRepeat: levels in filterRecords(electionData) -->
+         <div class="ng-scope" ng-repeat="levels in filterRecords(electionData)">
+          <div class="col-xs-12">
+           <!-- ngRepeat: districts in filterRecords(levels) -->
+           <div class="ng-scope" ng-repeat="districts in filterRecords(levels)">
+            <!-- ngIf: districts.$key!='Ballot Questions' -->
+            <div class="panel-body-party ng-scope" ng-if="districts.$key!='Ballot Questions'">
+             <div class="panel-heading-level1">
+              <div class="panel-title">
+               <h5>
+                <span class="ng-binding" ng-bind="districts.$key">
+                 Justice of the Supreme Court
+                </span>
+               </h5>
+              </div>
+             </div>
+             <div class="panel-body" style="background-color:#D1E7FE;">
+              <div class="col-xs-12">
+               <!-- ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="panel panel-default" style="border-style:none; border-width:0px;">
+                <!-- ngRepeat: districtList in districts -->
+                <div class="ng-scope" ng-repeat="districtList in districts">
+                 <!-- ngRepeat: lstdist in districtList -->
+                 <div class="ng-scope" ng-repeat="lstdist in districtList">
+                  <!-- ngRepeat: parties in lstdist -->
+                  <div class="ng-scope" ng-repeat="parties in lstdist">
+                   <div class="col-xs-12">
+                    <!-- ngIf: parties.District.length>2 -->
+                    <!-- ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           MCLAUGHLIN, MARIA
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (DEM)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           BROBSON, KEVIN
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (REP)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                   </div>
+                  </div>
+                  <!-- end ngRepeat: parties in lstdist -->
+                 </div>
+                 <!-- end ngRepeat: lstdist in districtList -->
+                </div>
+                <!-- end ngRepeat: districtList in districts -->
+               </div>
+               <div class="pull-right" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <a href="#" style="color:#1d4466;">
+                 Back to Top
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <!-- end ngIf: districts.$key!='Ballot Questions' -->
+            <!-- ngIf: districts.$key=='Ballot Questions' -->
+           </div>
+           <!-- end ngRepeat: districts in filterRecords(levels) -->
+           <div class="ng-scope" ng-repeat="districts in filterRecords(levels)">
+            <!-- ngIf: districts.$key!='Ballot Questions' -->
+            <div class="panel-body-party ng-scope" ng-if="districts.$key!='Ballot Questions'">
+             <div class="panel-heading-level1">
+              <div class="panel-title">
+               <h5>
+                <span class="ng-binding" ng-bind="districts.$key">
+                 Judge of the Superior Court
+                </span>
+               </h5>
+              </div>
+             </div>
+             <div class="panel-body" style="background-color:#D1E7FE;">
+              <div class="col-xs-12">
+               <!-- ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="panel panel-default" style="border-style:none; border-width:0px;">
+                <!-- ngRepeat: districtList in districts -->
+                <div class="ng-scope" ng-repeat="districtList in districts">
+                 <!-- ngRepeat: lstdist in districtList -->
+                 <div class="ng-scope" ng-repeat="lstdist in districtList">
+                  <!-- ngRepeat: parties in lstdist -->
+                  <div class="ng-scope" ng-repeat="parties in lstdist">
+                   <div class="col-xs-12">
+                    <!-- ngIf: parties.District.length>2 -->
+                    <!-- ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           LANE, TIMIKA
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (DEM)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           SULLIVAN , MEGAN
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (REP)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                   </div>
+                  </div>
+                  <!-- end ngRepeat: parties in lstdist -->
+                 </div>
+                 <!-- end ngRepeat: lstdist in districtList -->
+                </div>
+                <!-- end ngRepeat: districtList in districts -->
+               </div>
+               <div class="pull-right" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <a href="#" style="color:#1d4466;">
+                 Back to Top
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <!-- end ngIf: districts.$key!='Ballot Questions' -->
+            <!-- ngIf: districts.$key=='Ballot Questions' -->
+           </div>
+           <!-- end ngRepeat: districts in filterRecords(levels) -->
+           <div class="ng-scope" ng-repeat="districts in filterRecords(levels)">
+            <!-- ngIf: districts.$key!='Ballot Questions' -->
+            <div class="panel-body-party ng-scope" ng-if="districts.$key!='Ballot Questions'">
+             <div class="panel-heading-level1">
+              <div class="panel-title">
+               <h5>
+                <span class="ng-binding" ng-bind="districts.$key">
+                 Judge of the Superior Court (Retention)
+                </span>
+               </h5>
+              </div>
+             </div>
+             <div class="panel-body" style="background-color:#D1E7FE;">
+              <div class="col-xs-12">
+               <!-- ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="panel panel-default" style="border-style:none; border-width:0px;">
+                <!-- ngRepeat: districtList in districts -->
+                <div class="ng-scope" ng-repeat="districtList in districts">
+                 <!-- ngRepeat: lstdist in districtList -->
+                 <div class="ng-scope" ng-repeat="lstdist in districtList">
+                  <!-- ngRepeat: parties in lstdist -->
+                  <div class="ng-scope" ng-repeat="parties in lstdist">
+                   <div class="col-xs-12">
+                    <!-- ngIf: parties.District.length>2 -->
+                    <!-- ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==1">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           BENDER, JOHN T
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px; height:30px;">
+                          <div class="progress-bar progress-bar-success" ng-attr-style="width: {{item.YesVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                          <div class="progress-bar progress-bar-danger" ng-attr-style="width: {{item.NoVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext ng-binding" style="z-index: 1000 !important;">
+                          Votes: Yes: 0  No: 0
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional Yes : 0
+                         </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional No : 0
+                         </div>
+                        </div>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==1">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           BOWES, MARY JANE
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px; height:30px;">
+                          <div class="progress-bar progress-bar-success" ng-attr-style="width: {{item.YesVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                          <div class="progress-bar progress-bar-danger" ng-attr-style="width: {{item.NoVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext ng-binding" style="z-index: 1000 !important;">
+                          Votes: Yes: 0  No: 0
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional Yes : 0
+                         </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional No : 0
+                         </div>
+                        </div>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                   </div>
+                  </div>
+                  <!-- end ngRepeat: parties in lstdist -->
+                 </div>
+                 <!-- end ngRepeat: lstdist in districtList -->
+                </div>
+                <!-- end ngRepeat: districtList in districts -->
+               </div>
+               <div class="pull-right" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <a href="#" style="color:#1d4466;">
+                 Back to Top
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <!-- end ngIf: districts.$key!='Ballot Questions' -->
+            <!-- ngIf: districts.$key=='Ballot Questions' -->
+           </div>
+           <!-- end ngRepeat: districts in filterRecords(levels) -->
+           <div class="ng-scope" ng-repeat="districts in filterRecords(levels)">
+            <!-- ngIf: districts.$key!='Ballot Questions' -->
+            <div class="panel-body-party ng-scope" ng-if="districts.$key!='Ballot Questions'">
+             <div class="panel-heading-level1">
+              <div class="panel-title">
+               <h5>
+                <span class="ng-binding" ng-bind="districts.$key">
+                 Judge of the Commonwealth Court
+                </span>
+               </h5>
+              </div>
+             </div>
+             <div class="panel-body" style="background-color:#D1E7FE;">
+              <div class="col-xs-12">
+               <!-- ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="panel panel-default" style="border-style:none; border-width:0px;">
+                <!-- ngRepeat: districtList in districts -->
+                <div class="ng-scope" ng-repeat="districtList in districts">
+                 <!-- ngRepeat: lstdist in districtList -->
+                 <div class="ng-scope" ng-repeat="lstdist in districtList">
+                  <!-- ngRepeat: parties in lstdist -->
+                  <div class="ng-scope" ng-repeat="parties in lstdist">
+                   <div class="col-xs-12">
+                    <!-- ngIf: parties.District.length>2 -->
+                    <div class="panel-heading-party ng-scope" ng-if="parties.District.length&gt;2" style="margin-top:15px;">
+                     <div class="panel-title">
+                      <h5>
+                       <span class="ng-binding" ng-bind="parties.District">
+                        Electing 2
+                       </span>
+                      </h5>
+                     </div>
+                    </div>
+                    <!-- end ngIf: parties.District.length>2 -->
+                    <!-- ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           DUMAS, LORI A
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (DEM)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           SPURGEON, DAVID LEE
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (DEM)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           WALLACE, STACY MARIE
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (REP)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==0">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           CROMPTON, DREW
+                          </span>
+                         </small>
+                         <br/>
+                         <small>
+                          <span class="spantext ng-binding">
+                           (REP)
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px;  height:30px;">
+                          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0.00" class="progress-bar progress-bar-success" ng-attr-style="width: {{item.Percentage}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext" style="z-index: 1000 !important;">
+                          <span class="spantext ng-binding">
+                           Votes: 0
+                          </span>
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional : 0
+                         </div>
+                        </div>
+                       </div>
+                       <div class="ng-hide" ng-show="item.RunningMateName != ' '" style="margin-bottom:20px;">
+                        <small>
+                         Runningmate:
+                         <span class="ng-binding" ng-bind="item.RunningMateName">
+                         </span>
+                        </small>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                   </div>
+                  </div>
+                  <!-- end ngRepeat: parties in lstdist -->
+                 </div>
+                 <!-- end ngRepeat: lstdist in districtList -->
+                </div>
+                <!-- end ngRepeat: districtList in districts -->
+               </div>
+               <div class="pull-right" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <a href="#" style="color:#1d4466;">
+                 Back to Top
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <!-- end ngIf: districts.$key!='Ballot Questions' -->
+            <!-- ngIf: districts.$key=='Ballot Questions' -->
+           </div>
+           <!-- end ngRepeat: districts in filterRecords(levels) -->
+           <div class="ng-scope" ng-repeat="districts in filterRecords(levels)">
+            <!-- ngIf: districts.$key!='Ballot Questions' -->
+            <div class="panel-body-party ng-scope" ng-if="districts.$key!='Ballot Questions'">
+             <div class="panel-heading-level1">
+              <div class="panel-title">
+               <h5>
+                <span class="ng-binding" ng-bind="districts.$key">
+                 Judge of the Commonwealth Court (Retention)
+                </span>
+               </h5>
+              </div>
+             </div>
+             <div class="panel-body" style="background-color:#D1E7FE;">
+              <div class="col-xs-12">
+               <!-- ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="ng-scope" ng-repeat="countyoffices in Details">
+                <!-- ngIf: countyoffices.BallotQuestions == 0 && countyoffices.ElectionID == CountyElectionID && countyoffices.OfficeName == districts.$key && countyoffices.County == countyName -->
+               </div>
+               <!-- end ngRepeat: countyoffices in Details -->
+               <div class="panel panel-default" style="border-style:none; border-width:0px;">
+                <!-- ngRepeat: districtList in districts -->
+                <div class="ng-scope" ng-repeat="districtList in districts">
+                 <!-- ngRepeat: lstdist in districtList -->
+                 <div class="ng-scope" ng-repeat="lstdist in districtList">
+                  <!-- ngRepeat: parties in lstdist -->
+                  <div class="ng-scope" ng-repeat="parties in lstdist">
+                   <div class="col-xs-12">
+                    <!-- ngIf: parties.District.length>2 -->
+                    <!-- ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==1">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           COVEY, ANNE
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px; height:30px;">
+                          <div class="progress-bar progress-bar-success" ng-attr-style="width: {{item.YesVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                          <div class="progress-bar progress-bar-danger" ng-attr-style="width: {{item.NoVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext ng-binding" style="z-index: 1000 !important;">
+                          Votes: Yes: 0  No: 0
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional Yes : 0
+                         </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional No : 0
+                         </div>
+                        </div>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                    <div class="ng-scope" ng-repeat="item in parties.Candidates">
+                     <div class="col-xs-12" style="padding:0px;">
+                      <!-- ngIf: item.IsRetention==0 -->
+                      <!-- ngIf: item.IsRetention==1 -->
+                      <div class="panel-body-party ng-scope" ng-if="item.IsRetention==1">
+                       <div class="row">
+                        <div class="col-sm-4">
+                         <small>
+                          <span class="spantext ng-binding" ng-bind="item.CandidateName">
+                           JUBELIRER, RENEE COHN
+                          </span>
+                         </small>
+                        </div>
+                        <div class="col-sm-5">
+                         <div class="progress" style="margin-bottom:4px; height:30px;">
+                          <div class="progress-bar progress-bar-success" ng-attr-style="width: {{item.YesVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                          <div class="progress-bar progress-bar-danger" ng-attr-style="width: {{item.NoVotesPercent}}%" role="progressbar" style="width: 0.00%">
+                           <small>
+                            <span class="spantext ng-binding" style="padding-top:8px;">
+                             0.00%
+                            </span>
+                           </small>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="col-sm-3 pull-left">
+                         <span class="progress-spantext ng-binding" style="z-index: 1000 !important;">
+                          Votes: Yes: 0  No: 0
+                         </span>
+                        </div>
+                       </div>
+                       <div class="breakDownSection" ng-show="item.ShowVotesBreakdown == '1'">
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail Yes : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional Yes : 0
+                         </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-sm-4 ng-binding">
+                          Election Day No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Mail No : 0
+                         </div>
+                         <div class="col-sm-4 ng-binding">
+                          Provisional No : 0
+                         </div>
+                        </div>
+                       </div>
+                      </div>
+                      <!-- end ngIf: item.IsRetention==1 -->
+                     </div>
+                    </div>
+                    <!-- end ngRepeat: item in parties.Candidates -->
+                   </div>
+                  </div>
+                  <!-- end ngRepeat: parties in lstdist -->
+                 </div>
+                 <!-- end ngRepeat: lstdist in districtList -->
+                </div>
+                <!-- end ngRepeat: districtList in districts -->
+               </div>
+               <div class="pull-right" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <a href="#" style="color:#1d4466;">
+                 Back to Top
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <!-- end ngIf: districts.$key!='Ballot Questions' -->
+            <!-- ngIf: districts.$key=='Ballot Questions' -->
+           </div>
+           <!-- end ngRepeat: districts in filterRecords(levels) -->
+          </div>
+         </div>
+         <!-- end ngRepeat: levels in filterRecords(electionData) -->
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()">
+     </div>
+     <div class="cg-busy cg-busy-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()">
+      <div class="cg-busy-default-wrapper" style="position: absolute; inset: 0px;">
+       <div class="cg-busy-default-sign">
+        <div class="cg-busy-default-spinner">
+         <div class="bar1">
+         </div>
+         <div class="bar2">
+         </div>
+         <div class="bar3">
+         </div>
+         <div class="bar4">
+         </div>
+         <div class="bar5">
+         </div>
+         <div class="bar6">
+         </div>
+         <div class="bar7">
+         </div>
+         <div class="bar8">
+         </div>
+         <div class="bar9">
+         </div>
+         <div class="bar10">
+         </div>
+         <div class="bar11">
+         </div>
+         <div class="bar12">
+         </div>
+        </div>
+        <div class="cg-busy-default-text ng-binding">
+         Loading...
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="row ng-scope" ng-controller="FooterController">
+    <div class="col-sm-12">
+     <span class="pull-right ng-binding" style="font-size:smaller;font-weight:600;">
+      Last Updated Time: Nov 2, 2021 4:37:26 PM
+     </span>
+    </div>
+   </div>
+   <style type="text/css">
+    .contrast {
+        background-color: #07519C;
+    }
+   </style>
+   <div class="row">
+    <div class="col-sm-12">
+     <div class="navbar navbar-default contrast" role="navigation">
+      <div class="container-fluid">
+       <div class="navbar-header">
+        <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+         <span class="sr-only">
+          Toggle navigation
+         </span>
+         <span class="icon-bar">
+         </span>
+         <span class="icon-bar">
+         </span>
+         <span class="icon-bar">
+         </span>
+        </button>
+        <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
+          <li>
+           <a href="http://www.pa.gov/privacy-policy/" target="_blank">
+            Privacy Policy
+           </a>
+          </li>
+          <li>
+           <a href="http://www.pa.gov/security-policy/" target="_blank">
+            Security Policy
+           </a>
+          </li>
+          <li>
+           <a href="http://www.pa.gov/" target="_blank">
+            Agencies
+           </a>
+          </li>
+          <li>
+           <span class="navbar-text" style="color:#FFFFFF;font-size:x-small; padding-left:100px;">
+            Copyright © 2021 Commonwealth of Pennsylvania. All Rights Reserved
+           </span>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="/Scripts/common.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/moment.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/modernizr-2.6.2.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/bootstrap-notify.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/Angular/angular.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/Angular/angular-sanitize.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/geolocation.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/angular-animate.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/angular-busy.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/local-storage.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/AngularModule.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/Service.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/Controller.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/HeaderController.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/GeneralController.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/SpecialController.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/ReportController.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/AppScripts/ElectionFeedController.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/filesaver.min.js?v=1.2" type="text/javascript">
+  </script>
+  <script src="/Scripts/recaptcha/api.js?v=1.2" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   var applicationPath = 'https://www.electionreturns.pa.gov/';
+        var isMobileBrowser = 'False';
+        var environment = 'Production';
+        var isNotificationMessage = '';//'';
+        var site_key = '6LclhUsUAAAAAHoLOoFyJcQVCSD_viHr2bYC0v4_';
+        var enableRecaptcha = '1';
+        var maxRecaptchaLimit = '50';
+        var mainInstructionText = '';
+        
+        //if (isNotificationMessage.length > 0) {
+        //    var notify = $.notify({
+        //        icon: 'glyphicon glyphicon-warning-sign',
+        //        title: '',
+        //        message: isNotificationMessage,
+        //    }, {
+        //        type: 'notify',
+        //        allow_dismiss: false,
+        //        newest_on_top: true,
+        //        placement: { from: 'top', align: 'left' },
+        //        offset: { x: 10, y: 400 },
+        //        spacing: 10,
+        //        z_index: 1031,
+        //        delay: 0,
+        //        mouse_over: null
+        //    });
+        //}
+  </script>
+ </body>
+</html>
