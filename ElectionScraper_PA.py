@@ -121,3 +121,8 @@ for key, value in pages.items():
     df_s.to_csv('Data/data_'+key+'_partisan_'+ts+'.csv',index=False)
     if len(df_r) > 0:
         df_r.to_csv('Data/data_'+key+'_retention_'+ts+'.csv',index=False)
+        
+    # but also as non-timestamped csvs that get continuously rewritten
+    df_s.to_csv('Data/data_'+key+'_partisan.csv',index=False)
+    if len(df_r) > 0:
+        df_r.to_csv('Data/data_'+key+'_retention.csv',index=False)
