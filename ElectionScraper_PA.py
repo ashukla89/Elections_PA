@@ -27,9 +27,6 @@ pages = {
     'comm':comm
 }
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
-
-
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 
