@@ -8,6 +8,7 @@ import json
 from bs4 import BeautifulSoup
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 import time
@@ -28,12 +29,16 @@ pages = {
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
-browser = webdriver.Chrome()
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
+driver = webdriver.Chrome(options=chrome_options)
 
 docs = []
 
 for key, value in pages.items():
-    browser.get(base+value)
+    driver.get(base+value)
     time.sleep(3)
     html = browser.page_source
     # get timestamp
