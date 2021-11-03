@@ -37,7 +37,7 @@ docs = []
 for key, value in pages.items():
     driver.get(base+value)
     time.sleep(3)
-    html = browser.page_source
+    html = driver.page_source
     # get timestamp
     ts = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     doc = BeautifulSoup(html)
